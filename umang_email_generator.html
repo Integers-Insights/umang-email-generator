@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umang Global — Sales Email Generator</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:         #f4f6f9;
+  --bg2:        #eaecf0;
+  --paper:      #ffffff;
+  --border:     #dde1e8;
+  --border2:    #c4cad6;
+  --ink:        #0f1923;
+  --ink2:       #374151;
+  --ink3:       #6b7685;
+  --ink4:       #a8b0bc;
+  --primary:    #02afb8;
+  --primary-lt: #e1fdff;
+  --primary-bdr:#c0fcff;
+  --green:      #166534;
+  --green-lt:   #dcfce7;
+  --green-bdr:  #86efac;
+  --amber:      #92400e;
+  --amber-lt:   #fef3c7;
+  --amber-bdr:  #fcd34d;
+  --violet:     #5b21b6;
+  --violet-lt:  #ede9fe;
+  --violet-bdr: #c4b5fd;
+  --rose:       #9f1239;
+  --rose-lt:    #ffe4e6;
+  --rose-bdr:   #fda4af;
+  --font:       'Outfit', sans-serif;
+  --serif:      'Lora', serif;
+  --sh1: 0 1px 3px rgba(15,25,35,0.06), 0 1px 2px rgba(15,25,35,0.04);
+  --sh2: 0 4px 12px rgba(15,25,35,0.08), 0 2px 4px rgba(15,25,35,0.04);
+  --sh3: 0 8px 24px rgba(15,25,35,0.10), 0 4px 8px rgba(15,25,35,0.06);
+  --radius: 8px;
+  --radius-sm: 5px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--ink);
+  min-height:100vh;
+  font-size:14px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ─── HEADER ──────────────────────────────────────────────────── */
+header {
+  background:var(--paper);
+  border-bottom:1px solid var(--border);
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 28px;
+  position:sticky;top:0;z-index:200;
+  box-shadow:var(--sh1);
+}
+.hd-left { display:flex; align-items:center; gap:20px; }
+
+/* Umang logo area */
+.umang-brand {
+  display:flex; align-items:center; gap:10px;
+}
+.umang-emblem {
+  width:38px; height:38px;
+  background:var(--primary);
+  border-radius:var(--radius-sm);
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+.umang-emblem svg { width:22px; height:22px; fill:white; }
+.umang-name-block {}
+.umang-name {
+  font-size:16px;
+  font-weight:700;
+  color:var(--ink);
+  letter-spacing:0.01em;
+  line-height:1;
+}
+.umang-tagline {
+  font-size:12px;
+  color:var(--ink2);
+  font-weight:400;
+  margin-top:2px;
+}
+.hd-divider {
+  width:1px; height:30px;
+  background:var(--border);
+}
+.app-label {
+  font-size:12px;
+  font-weight:500;
+  color:var(--ink3);
+}
+
+/* INTEGERS badge — right side */
+.integers-badge {
+  display:flex; align-items:center; gap:6px;
+  font-size:11px;
+  color:var(--ink4);
+}
+.integers-badge span {
+  font-weight:600;
+  letter-spacing:0.08em;
+  font-size:10px;
+  color:var(--ink4);
+  text-transform:uppercase;
+}
+.int-mark {
+  width:20px; height:20px;
+  border:1.5px solid var(--border2);
+  border-radius:3px;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--serif);
+  font-size:12px;
+  font-weight:600;
+  color:var(--ink4);
+}
+
+.hd-certs {
+  display:flex; gap:5px; align-items:center;
+}
+.cert-pill {
+  font-size:10px; font-weight:600;
+  padding:3px 9px;
+  background:var(--primary-lt);
+  color:var(--primary);
+  border:1px solid var(--primary-bdr);
+  border-radius:20px;
+  letter-spacing:0.04em;
+}
+
+/* ─── LAYOUT ──────────────────────────────────────────────────── */
+.app {
+  display:grid;
+  grid-template-columns:400px 1fr;
+  min-height:calc(100vh - 64px);
+}
+@media(max-width:1000px){.app{grid-template-columns:1fr;}}
+
+/* ─── LEFT PANEL ──────────────────────────────────────────────── */
+.left-panel {
+  background:var(--paper);
+  border-right:1px solid var(--border);
+  padding:24px 22px 40px;
+  overflow-y:auto;
+  max-height:calc(100vh - 64px);
+  position:sticky; top:64px;
+  display:flex; flex-direction:column; gap:22px;
+}
+@media(max-width:1000px){.left-panel{position:static;max-height:none;}}
+
+/* Section titles */
+.sec-title {
+  font-size:11px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  color:var(--ink3);
+  margin-bottom:10px;
+  display:flex; align-items:center; gap:8px;
+}
+.sec-title::after {
+  content:''; flex:1; height:1px; background:var(--border);
+}
+
+/* Card container */
+.card {
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:16px 18px;
+}
+
+/* Form fields */
+.field-group { display:flex; flex-direction:column; gap:12px; }
+.field { display:flex; flex-direction:column; gap:5px; }
+.field-label {
+  font-size:12px; font-weight:500;
+  color:var(--ink2);
+}
+select, input[type=text] {
+  background:var(--paper);
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:9px 12px;
+  font-family:var(--font);
+  font-size:13.5px;
+  color:var(--ink);
+  outline:none;
+  transition:border-color 0.15s, box-shadow 0.15s;
+  appearance:none; -webkit-appearance:none;
+  width:100%;
+}
+select {
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%236b7685' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 12px center;
+  padding-right:32px;
+  cursor:pointer;
+}
+select:focus, input:focus {
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(27,79,138,0.1);
+}
+input::placeholder { color:var(--ink4); }
+
+/* Tag selectors */
+.tag-grid { display:flex; flex-wrap:wrap; gap:7px; }
+.tag {
+  font-size:12.5px; font-weight:500;
+  padding:6px 13px;
+  border:1.5px solid var(--border);
+  border-radius:20px;
+  color:var(--ink3);
+  background:var(--paper);
+  cursor:pointer;
+  user-select:none;
+  transition:all 0.13s;
+  line-height:1.2;
+}
+.tag:hover { border-color:var(--border2); color:var(--ink2); background:var(--bg2); }
+.tag.sel-blue   { background:var(--primary-lt); border-color:var(--primary);    color:var(--primary); font-weight:600; }
+.tag.sel-green  { background:var(--green-lt);   border-color:var(--green-bdr);  color:var(--green);   font-weight:600; }
+.tag.sel-amber  { background:var(--amber-lt);   border-color:var(--amber-bdr);  color:var(--amber);   font-weight:600; }
+.tag.sel-violet { background:var(--violet-lt);  border-color:var(--violet-bdr); color:var(--violet);  font-weight:600; }
+.tag.sel-rose   { background:var(--rose-lt);    border-color:var(--rose-bdr);   color:var(--rose);    font-weight:600; }
+
+.req-err {
+  font-size:11.5px; color:#dc2626;
+  display:none; margin-top:4px;
+  font-weight:500;
+}
+.req-err.show { display:block; }
+
+/* Generate button */
+.gen-btn {
+  width:100%;
+  padding:13px 20px;
+  background:var(--primary);
+  color:#fff;
+  border:none;
+  border-radius:var(--radius);
+  font-family:var(--font);
+  font-size:14px; font-weight:600;
+  letter-spacing:0.02em;
+  cursor:pointer;
+  transition:all 0.18s;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  box-shadow:var(--sh1);
+}
+.gen-btn:hover { background:#048d95; box-shadow:var(--sh2); transform:translateY(-1px); }
+.gen-btn:active { transform:translateY(0); }
+.gen-btn svg { width:16px; height:16px; fill:none; stroke:white; stroke-width:2; }
+
+/* Tip box */
+.tip-box {
+  background:var(--amber-lt);
+  border:1px solid var(--amber-bdr);
+  border-radius:var(--radius-sm);
+  padding:11px 14px;
+  font-size:12px;
+  color:var(--amber);
+  line-height:1.6;
+}
+.tip-box strong {
+  display:block; font-size:11px; font-weight:600;
+  text-transform:uppercase; letter-spacing:0.07em;
+  margin-bottom:3px;
+}
+
+/* ─── RIGHT PANEL ─────────────────────────────────────────────── */
+.right-panel {
+  padding:28px 32px 60px;
+  overflow-y:auto;
+}
+
+/* Empty state */
+.empty-state {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  min-height:70vh; gap:14px; text-align:center;
+}
+.es-icon {
+  width:72px; height:72px;
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:var(--sh1);
+}
+.es-icon svg { width:32px; height:32px; stroke:var(--ink4); fill:none; stroke-width:1.5; }
+.es-title { font-size:20px; font-weight:600; color:var(--ink2); }
+.es-sub { font-size:13px; color:var(--ink3); max-width:300px; line-height:1.7; }
+.es-hint {
+  display:flex; gap:8px; flex-wrap:wrap; justify-content:center;
+  margin-top:8px;
+}
+.hint-step {
+  font-size:11.5px; font-weight:500;
+  padding:5px 12px;
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:20px;
+  color:var(--ink3);
+}
+
+/* Output */
+.seq-out { display:none; }
+.seq-out.visible { display:block; animation:rise 0.28s ease both; }
+@keyframes rise { from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);} }
+
+/* Output header */
+.out-header {
+  display:flex; align-items:flex-start;
+  justify-content:space-between; gap:16px;
+  margin-bottom:20px; flex-wrap:wrap;
+}
+.out-title {
+  font-family:var(--serif);
+  font-size:26px; font-weight:600;
+  color:var(--ink); line-height:1.25;
+}
+.out-title em { font-style:italic; color:var(--primary); }
+.out-meta {
+  display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;
+}
+.meta-tag {
+  font-size:11px; font-weight:500;
+  padding:3px 10px;
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:20px;
+  color:var(--ink3);
+}
+
+.copy-all-btn {
+  padding:9px 18px;
+  background:var(--paper);
+  border:1.5px solid var(--border2);
+  color:var(--ink2);
+  border-radius:var(--radius-sm);
+  font-family:var(--font);
+  font-size:12px; font-weight:600;
+  cursor:pointer;
+  transition:all 0.15s;
+  white-space:nowrap;
+  align-self:flex-start;
+  display:flex; align-items:center; gap:6px;
+}
+.copy-all-btn:hover { background:var(--ink); color:#fff; border-color:var(--ink); }
+.copy-all-btn svg { width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2; }
+
+/* Timing rail */
+.timing-rail {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+  margin-bottom:18px;
+  box-shadow:var(--sh1);
+}
+.tr-cell {
+  padding:11px 14px;
+  border-right:1px solid var(--border);
+  text-align:center;
+}
+.tr-cell:last-child { border-right:none; }
+.tr-num {
+  font-size:22px; font-weight:700;
+  line-height:1; margin-bottom:3px;
+}
+.tr-cell:nth-child(1) .tr-num { color:var(--primary); }
+.tr-cell:nth-child(2) .tr-num { color:var(--green); }
+.tr-cell:nth-child(3) .tr-num { color:var(--amber); }
+.tr-cell:nth-child(4) .tr-num { color:var(--violet); }
+.tr-label { font-size:10px; font-weight:500; color:var(--ink4); text-transform:uppercase; letter-spacing:0.07em; }
+
+/* Email cards */
+.email-stack { display:flex; flex-direction:column; gap:6px; }
+
+.ecard {
+  background:var(--paper);
+  border:1.5px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--sh1);
+  transition:border-color 0.2s, box-shadow 0.2s;
+}
+.ecard.is-open { border-color:var(--primary-bdr); box-shadow:var(--sh2); }
+
+.ecard-hd {
+  display:flex; align-items:center; gap:14px;
+  padding:14px 18px;
+  cursor:pointer;
+  user-select:none;
+  transition:background 0.12s;
+}
+.ecard-hd:hover { background:var(--bg); }
+
+.e-num-badge {
+  width:36px; height:36px;
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:15px; font-weight:700;
+  flex-shrink:0;
+}
+.e1 .e-num-badge { background:var(--primary-lt); color:var(--primary); }
+.e2 .e-num-badge { background:var(--green-lt);   color:var(--green); }
+.e3 .e-num-badge { background:var(--amber-lt);   color:var(--amber); }
+.e4 .e-num-badge { background:var(--violet-lt);  color:var(--violet); }
+
+.e-info { flex:1; min-width:0; }
+.e-label { font-size:13px; font-weight:600; color:var(--ink); }
+.e-timing { font-size:11px; color:var(--ink4); font-weight:400; margin-top:1px; }
+.e-preview {
+  font-size:12px; color:var(--ink3);
+  font-style:italic;
+  max-width:240px;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  flex-shrink:0;
+}
+.e-chevron {
+  color:var(--ink4); font-size:18px;
+  transition:transform 0.2s;
+  flex-shrink:0;
+}
+.ecard.is-open .e-chevron { transform:rotate(90deg); }
+
+.ecard-bd {
+  display:none;
+  padding:0 18px 20px;
+  border-top:1px solid var(--border);
+}
+.ecard-bd.is-open { display:block; }
+
+/* Field in body */
+.ef-lbl {
+  font-size:10.5px; font-weight:600;
+  text-transform:uppercase; letter-spacing:0.09em;
+  color:var(--ink4);
+  margin-top:16px; margin-bottom:5px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.ef-subj {
+  background:var(--primary-lt);
+  border:1px solid var(--primary-bdr);
+  border-radius:var(--radius-sm);
+  padding:10px 14px;
+  font-size:13px; font-weight:600;
+  color:var(--primary);
+}
+.ef-body-wrap { position:relative; margin-top:0; }
+.ef-body {
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:16px 18px;
+  font-size:13.5px;
+  line-height:1.85;
+  color:var(--ink2);
+  font-family:var(--font);
+}
+.ef-body p { margin:0; min-height:1.2em; }
+/* Inline copy button — sits next to the "Email Body" label */
+.copy-btn-inline {
+  padding:5px 13px;
+  background:var(--paper);
+  border:1.5px solid var(--primary-bdr);
+  border-radius:var(--radius-sm);
+  font-family:var(--font);
+  font-size:11px; font-weight:600;
+  color:var(--primary);
+  cursor:pointer;
+  transition:all 0.15s;
+  display:inline-flex; align-items:center; gap:5px;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.copy-btn-inline:hover { background:var(--primary); color:#fff; border-color:var(--primary); }
+.copy-btn-inline.copied { background:var(--green); color:#fff; border-color:var(--green); }
+.copy-btn-inline svg { width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.8; }
+
+/* Strategy note */
+.strat {
+  display:flex; gap:10px; align-items:flex-start;
+  background:var(--amber-lt);
+  border:1px solid var(--amber-bdr);
+  border-radius:var(--radius-sm);
+  padding:11px 14px;
+  margin-top:12px;
+  font-size:12px; color:var(--amber);
+  line-height:1.65;
+}
+.strat-ico { font-size:14px; flex-shrink:0; margin-top:1px; }
+
+/* ─── Scrollbar ─────────────────────────────────────────────────── */
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--border2); border-radius:3px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="hd-left">
+    <div class="umang-brand">
+      <div class="umang-emblem">
+        <!-- U lettermark -->
+         <img src="./image/Core-Logo.png" alt="logo" style="height: 45px;width: 45px;">
+        <!--svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 4v10c0 3.866 3.134 7 7 7s7-3.134 7-7V4" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        </svg-->
+      </div>
+      <div class="umang-name-block">
+        <div class="umang-name">Umang Global Group</div>
+        <div class="umang-tagline">Sales Email Generator</div>
+      </div>
+    </div>
+    <div class="hd-divider"></div>
+    <div class="hd-certs">
+      <div class="cert-pill">GMP</div>
+      <div class="cert-pill">ISO 9001</div>
+      <div class="cert-pill">FSSAI</div>
+      <div class="cert-pill">1000 T/mo</div>
+    </div>
+  </div>
+  <div class="integers-badge">
+    <span>Powered by</span>
+    <img src="./image/Int_Logo_Main_Horz.png" alt="icon" style="height: 30px;width: auto;"></div>
+    
+  </div>
+</header>
+
+<div class="app">
+
+  <!-- ── LEFT PANEL ──────────────────────────────────── -->
+  <div class="left-panel">
+
+    <!-- REP SETUP -->
+    <div>
+      <div class="sec-title">Your Details</div>
+      <div class="card">
+        <div class="field-group">
+
+          <div class="field">
+            <div class="field-label">Company</div>
+            <select id="compSel">
+              <option value="Umang Global Group Pvt Ltd">Umang Global Group Pvt Ltd</option>
+              <option value="Umang Encapsulation Solutions Pvt Ltd">Umang Encapsulation Solutions Pvt Ltd</option>
+              <option value="Umang Particle Science Pvt Ltd">Umang Particle Science Pvt Ltd</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <div class="field-label">Sales Representative</div>
+            <select id="repSel" onchange="fillRep()">
+              <option value="">— Select your name —</option>
+              <option value="Sanika">Sanika (USA)</option>
+              <option value="Fiza">Fiza (Middle East)</option>
+              <option value="Aniket">Aniket (Europe)</option>
+              <option value="Manya">Manya (Europe)</option>
+              <option value="Vivek">Vivek (India)</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <div class="field-label">Your Name <span style="color:var(--ink4);font-weight:400;">(edit if needed)</span></div>
+            <input type="text" id="repName" placeholder="Auto-filled above" />
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- LEAD INFO -->
+    <div>
+      <div class="sec-title">Lead Information</div>
+      <div class="card">
+        <div class="field-group">
+
+          <div class="field">
+            <div class="field-label">Lead's Name</div>
+            <input type="text" id="leadName" placeholder="e.g. Dr. Patel, Mr. Chen, Sarah" />
+          </div>
+
+          <div class="field">
+            <div class="field-label">Lead's Company <span style="color:var(--ink4);font-weight:400;">(optional)</span></div>
+            <input type="text" id="leadCo" placeholder="e.g. NovaBio Inc." />
+          </div>
+
+          <div class="field">
+            <div class="field-label">Lead Source</div>
+            <div class="tag-grid" id="srcTags">
+              <div class="tag" data-g="src" data-v="website"    onclick="pick(this,'src','blue')">Website</div>
+              <div class="tag" data-g="src" data-v="alibaba"    onclick="pick(this,'src','blue')">Alibaba</div>
+              <div class="tag" data-g="src" data-v="facebook"   onclick="pick(this,'src','blue')">Facebook</div>
+              <div class="tag" data-g="src" data-v="instagram"  onclick="pick(this,'src','blue')">Instagram</div>
+              <div class="tag" data-g="src" data-v="linkedin"   onclick="pick(this,'src','blue')">LinkedIn</div>
+              <div class="tag" data-g="src" data-v="tradeindia" onclick="pick(this,'src','blue')">TradeIndia</div>
+              <div class="tag" data-g="src" data-v="indiamart"  onclick="pick(this,'src','blue')">IndiaMART</div>
+              <div class="tag" data-g="src" data-v="email"      onclick="pick(this,'src','blue')">Email</div>
+              <div class="tag" data-g="src" data-v="whatsapp"   onclick="pick(this,'src','blue')">WhatsApp</div>
+            </div>
+            <div class="req-err" id="req_src">↑ Please select a lead source</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- SEGMENT -->
+    <div>
+      <div class="sec-title">Segment</div>
+      <div class="tag-grid" id="segTags">
+        <div class="tag" data-g="seg" data-v="personalcare"   onclick="pick(this,'seg','rose')">🧴 Personal Care</div>
+        <div class="tag" data-g="seg" data-v="nutraceuticals" onclick="pick(this,'seg','green')">💊 Nutraceuticals</div>
+        <div class="tag" data-g="seg" data-v="pharma"         onclick="pick(this,'seg','violet')">⚕️ Pharmaceuticals</div>
+        <div class="tag" data-g="seg" data-v="engineering"    onclick="pick(this,'seg','amber')">⚙️ Engineering</div>
+      </div>
+      <div class="req-err" id="req_seg">↑ Please select a segment</div>
+    </div>
+
+    <!-- LEAD TYPE -->
+    <div>
+      <div class="sec-title">Lead Type / Request</div>
+      <div class="tag-grid" id="ltTags">
+        <div class="tag" data-g="lt" data-v="catalogue"   onclick="pick(this,'lt','blue')">📁 Catalogue</div>
+        <div class="tag" data-g="lt" data-v="productinfo" onclick="pick(this,'lt','blue')">ℹ️ Product Info</div>
+        <div class="tag" data-g="lt" data-v="coa"         onclick="pick(this,'lt','blue')">📋 COA / Spec</div>
+        <div class="tag" data-g="lt" data-v="pricing"     onclick="pick(this,'lt','blue')">💰 Pricing</div>
+        <div class="tag" data-g="lt" data-v="shipping"    onclick="pick(this,'lt','blue')">🚚 Shipping / LT</div>
+        <div class="tag" data-g="lt" data-v="moq"         onclick="pick(this,'lt','blue')">📦 MOQ / Volume</div>
+        <div class="tag" data-g="lt" data-v="sample"      onclick="pick(this,'lt','blue')">🧪 Free Sample</div>
+        <div class="tag" data-g="lt" data-v="trial"       onclick="pick(this,'lt','blue')">🔬 Trial Batch</div>
+        <div class="tag" data-g="lt" data-v="regulatory"  onclick="pick(this,'lt','blue')">📜 Regulatory / GMP</div>
+        <div class="tag" data-g="lt" data-v="rdcollab"    onclick="pick(this,'lt','blue')">🧬 R&amp;D Collab</div>
+        <div class="tag" data-g="lt" data-v="partnership" onclick="pick(this,'lt','blue')">🤝 CMO Partnership</div>
+        <div class="tag" data-g="lt" data-v="export"      onclick="pick(this,'lt','blue')">🌏 Export Inquiry</div>
+      </div>
+      <div class="req-err" id="req_lt">↑ Please select a lead type</div>
+    </div>
+
+    <!-- GENERATE -->
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <button class="gen-btn" onclick="generate()">
+        <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        Generate Email Sequence
+      </button>
+      <div class="tip-box">
+        <strong>📬 Deliverability note</strong>
+        Email 1 uses a catalogue link — no attachment. Free sample offered from Email 2. Max 1 CTA per email to avoid spam filters.
+      </div>
+    </div>
+
+  </div><!-- /left -->
+
+  <!-- ── RIGHT PANEL ─────────────────────────────────── -->
+  <div class="right-panel">
+
+    <div class="empty-state" id="emptyState">
+      <div class="es-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      </div>
+      <div class="es-title">Ready to generate</div>
+      <div class="es-sub">Configure the lead details on the left, then click Generate to get your 4-email sequence.</div>
+      <div class="es-hint">
+        <div class="hint-step">① Your Details</div>
+        <div class="hint-step">② Lead Source</div>
+        <div class="hint-step">③ Segment</div>
+        <div class="hint-step">④ Lead Type</div>
+        <div class="hint-step">⑤ Generate</div>
+      </div>
+    </div>
+
+    <div class="seq-out" id="seqOut">
+      <div class="out-header">
+        <div>
+          <div class="out-title" id="outTitle">Email Sequence</div>
+          <div class="out-meta" id="outMeta"></div>
+        </div>
+        <button class="copy-all-btn" onclick="copyAll()">
+          <svg viewBox="0 0 16 16"><rect x="5" y="5" width="9" height="9" rx="1"/><path d="M10 5V3a1 1 0 00-1-1H3a1 1 0 00-1 1v6a1 1 0 001 1h2"/></svg>
+          Copy All Emails
+        </button>
+      </div>
+
+      <div class="timing-rail">
+        <div class="tr-cell"><div class="tr-num">E1</div><div class="tr-label">Day 0 · Now</div></div>
+        <div class="tr-cell"><div class="tr-num">E2</div><div class="tr-label">Day 3–4</div></div>
+        <div class="tr-cell"><div class="tr-num">E3</div><div class="tr-label">Day 9–11</div></div>
+        <div class="tr-cell"><div class="tr-num">E4</div><div class="tr-label">Day 20–22</div></div>
+      </div>
+
+      <div class="email-stack" id="emailStack"></div>
+    </div>
+
+  </div><!-- /right -->
+
+</div><!-- /app -->
+
+<script>
+// ── STATE ─────────────────────────────────────────────────────────
+const ST = { src:null, seg:null, lt:null };
+
+// ── CATALOGUE LINKS ───────────────────────────────────────────────
+const CATALOGUES = {
+  personalcare:   'https://umangglobal.sharepoint.com/:b:/s/UmangGlobal/IQBjyOuWVq79Ra3l14Ev0iogAYxzMpK9Lp5VcjAIDJNRlss?e=9OS8lA',
+  nutraceuticals: 'https://umangglobal.sharepoint.com/:b:/s/UmangGlobal/IQBjyOuWVq79Ra3l14Ev0iogAYxzMpK9Lp5VcjAIDJNRlss?e=9OS8lA',
+  pharma:         'https://umangglobal.sharepoint.com/:b:/s/UmangGlobal/IQBjyOuWVq79Ra3l14Ev0iogAYxzMpK9Lp5VcjAIDJNRlss?e=9OS8lA',
+  engineering:    'https://umangglobal.sharepoint.com/:b:/s/UmangGlobal/IQBjyOuWVq79Ra3l14Ev0iogAYxzMpK9Lp5VcjAIDJNRlss?e=9OS8lA'
+};
+
+// ── PRODUCT DATA ──────────────────────────────────────────────────
+const PROD = {
+  personalcare: {
+    label: 'Personal Care',
+    items: [
+      'Actifilms / HPMC films — toothpaste applications',
+      'Dissolving beads — body care & face care',
+      'Exfoliating beads — face care & body care',
+      'Liposomal encapsulates',
+      'Colour-changing beads',
+      'Fragrance beads'
+    ],
+    custom: 'mesh size, colour, active ingredient, release profile, fragrance intensity',
+    profiles: 'Immediate release, sustained release, time-release, enteric-coated, taste-masked'
+  },
+  nutraceuticals: {
+    label: 'Nutraceuticals',
+    items: [
+      'Beadlets — herbs & botanicals, actives, minerals, vitamins, amino acids',
+      'Carotenoid & antioxidant beadlets',
+      'Fibre encapsulates',
+      'Pellets for capsule fill',
+      'Liquid-filled capsules (LFHC)',
+      'Gummies',
+      'Sachets',
+      'Hot & cold beverage formats'
+    ],
+    custom: 'mesh size, active load, colour, release profile, carrier matrix',
+    profiles: 'Enteric-coated, sustained release, time-release, taste-masked, immediate release'
+  },
+  pharma: {
+    label: 'Pharmaceuticals',
+    items: [
+      'Pharma pellets',
+      'MUPS (Multi-Unit Pellet Systems)',
+      'Granules for capsule fill',
+      'Granules for pressed tablets'
+    ],
+    custom: 'particle size distribution, coating level, active load, dissolution profile',
+    profiles: 'Enteric-coated, sustained release, controlled release, immediate release, taste-masked'
+  },
+  engineering: {
+    label: 'Engineering / Machinery',
+    items: [
+      'Extruders — pharmaceutical & nutraceutical grade',
+      'Spheronizers',
+      'Fluid-bed dryers',
+      'Coating equipment',
+      'Complete lines for encapsulated product manufacturing'
+    ],
+    custom: 'capacity, material of construction, automation level, GMP compliance grade',
+    profiles: 'Laboratory scale, pilot scale, commercial scale'
+  }
+};
+
+const MARKETS = ['USA', 'Europe', 'Middle East', 'South Asia', 'Russia'];
+const PHONE   = '+91-XXXXXXXXXX';
+const WEBSITE = 'www.umangglobal.com';
+
+const srcPhrase = {
+  website:    'your enquiry on our website',
+  alibaba:    'your Alibaba enquiry',
+  facebook:   'your response to our Facebook campaign',
+  instagram:  'your Instagram inquiry',
+  linkedin:   'your LinkedIn message',
+  tradeindia: 'your TradeIndia enquiry',
+  indiamart:  'your IndiaMART message',
+  email:      'your email to our team',
+  whatsapp:   'your WhatsApp message'
+};
+
+const ltLabel = {
+  catalogue:'Catalogue Request', productinfo:'Product Information',
+  coa:'COA / Specification', pricing:'Pricing / Costing',
+  shipping:'Shipping & Lead Time', moq:'MOQ Discussion',
+  sample:'Free Sample Request', trial:'Trial / Pilot Batch',
+  regulatory:'Regulatory / GMP', rdcollab:'R&D Collaboration',
+  partnership:'CMO Partnership', export:'Export Inquiry'
+};
+
+const cardLabels = [
+  'Email 1 — Initial Response',
+  'Email 2 — Value & Proof',
+  'Email 3 — Soft Nudge',
+  'Email 4 — Final Outreach'
+];
+const timings = [
+  'Send immediately — within 2 hours',
+  'Follow-up: Day 3–4',
+  'Follow-up: Day 9–11',
+  'Break-up email: Day 20–22'
+];
+const strategies = [
+  'Strategy: Speed matters — reply within 2 hours. Address their specific request, mention one relevant product from their segment, and ask exactly one qualifying question. Share the catalogue link rather than attaching a file (avoids spam filters).',
+  'Strategy: Lead with value, not a sales pitch. Highlight a specific technical differentiation point. Offer a free sample with zero commitment. Soft CTA — a 15-minute call or sample request, not a hard close.',
+  'Strategy: Keep this email to 5–7 lines. Reference that you\'ve followed up before. Give them a clear "not yet" option. Brevity and directness signal confidence — long follow-ups get deleted.',
+  'Strategy: The break-up email consistently generates the highest reply rate in B2B sequences. Tell them you won\'t follow up again. Make the door clearly open for when they\'re ready. End on a positive, professional note.'
+];
+
+// ── TAG SELECTION ─────────────────────────────────────────────────
+function pick(el, group, cls) {
+  document.querySelectorAll(`[data-g="${group}"]`).forEach(t => {
+    t.className = 'tag';
+  });
+  el.classList.add(`sel-${cls}`);
+  ST[group] = el.dataset.v;
+  document.getElementById(`req_${group}`).classList.remove('show');
+}
+
+function fillRep() {
+  const v = document.getElementById('repSel').value;
+  if (v) document.getElementById('repName').value = v;
+}
+
+// ── SUBJECT LINES ─────────────────────────────────────────────────
+function subjects(lt, seg) {
+  const sl = PROD[seg]?.label || seg;
+  const map = {
+    catalogue:   [`Our ${sl} product catalogue — as requested`,`Beyond the catalogue: our ${sl} capabilities`,`Following up — did the catalogue reach you?`,`Closing the loop — Umang Global`],
+    productinfo: [`Product details for your ${sl} project — Umang Global`,`Technical overview: ${sl} encapsulation at Umang Global`,`Re: Product inquiry — a quick follow-up`,`One last note from Umang Global`],
+    coa:         [`COA & technical specifications — Umang Global`,`Quality documentation pack: GMP + analytical overview`,`Re: COA request — checking in with your QA team`,`Closing the loop on your compliance review`],
+    pricing:     [`Pricing framework for your ${sl} requirement — Umang Global`,`A few parameters to sharpen your quotation`,`Re: Pricing inquiry — still relevant?`,`Final note on your pricing enquiry`],
+    shipping:    [`Lead times & shipping terms — Umang Global`,`Full logistics overview: Incoterms, transit & documentation`,`Re: Shipping inquiry — quick check-in`,`Last follow-up on your logistics query`],
+    moq:         [`MOQ & volume tiers — Umang Global`,`Flexible volume structures for ${sl} programmes`,`Re: MOQ discussion — any update on volumes?`,`Closing the loop on volume requirements`],
+    sample:      [`Complimentary sample offer — ${sl} evaluation`,`Getting your sample ready — a few details needed`,`Re: Sample dispatch — status check`,`Final follow-up: sample evaluation`],
+    trial:       [`Pilot batch enquiry — Umang Global manufacturing team`,`How our trial batch programme works`,`Re: Pilot batch — ready to initiate?`,`Last check-in: pilot batch enquiry`],
+    regulatory:  [`GMP certification & regulatory documentation — Umang Global`,`Full compliance documentation for ${sl}`,`Re: Regulatory query — follow-up from Umang Global`,`Closing the loop on your compliance review`],
+    rdcollab:    [`R&D collaboration enquiry — Umang Global`,`Our formulation R&D capabilities in ${sl}`,`Re: R&D discussion — any further questions?`,`One last follow-up from our R&D team`],
+    partnership: [`Contract manufacturing partnership — Umang Global`,`Full-service CMO overview — Umang Global`,`Re: Partnership discussion — a few open questions`,`Keeping the door open — Umang Global`],
+    export:      [`Export capabilities & documentation — Umang Global`,`International shipping, compliance & certifications`,`Re: Export inquiry — following up`,`Final note on your export enquiry`]
+  };
+  return map[lt] || map.productinfo;
+}
+
+// ── EMAIL BODY BUILDER ────────────────────────────────────────────
+function buildBody(idx, lt, seg, src, N, ME, CO, leadCo) {
+  const P    = PROD[seg];
+  const segL = P?.label || seg;
+  const srcP = srcPhrase[src] || 'your enquiry';
+  const catL = CATALOGUES[seg] || CATALOGUES.nutraceuticals;
+  const lcLine = leadCo ? ` at ${leadCo}` : '';
+  const itemList = P.items.map(i => `  • ${i}`).join('\n');
+
+  const sign = `Warm regards,\n${ME}\nBusiness Development | ${CO}\n${PHONE} | ${WEBSITE}`;
+  const signB = `Best regards,\n${ME}\n${CO} | ${PHONE} | ${WEBSITE}`;
+  const signS = `Regards,\n${ME}\n${CO} | ${PHONE}`;
+
+  // ── EMAIL 1 ──────────────────────────────────────────────────────
+  if (idx === 0) {
+    const bodies = {
+
+      catalogue:
+`Dear ${N},
+
+Thank you for reaching out to Umang Global via ${srcP}.
+
+Our product catalogue for the ${segL} range is available here:
+${catL}
+
+The catalogue covers our complete offering for this segment:
+${itemList}
+
+All products are customisable by: ${P.custom}.
+Available release and coating profiles: ${P.profiles}.
+
+Umang Global operates three manufacturing entities — Umang Global Group, Umang Encapsulation Solutions, and Umang Particle Science — with a combined capacity of 1,000 tonnes per month. Our facilities are GMP-certified, ISO 9001:2015 compliant, and FSSAI licensed.
+
+To help me send you the most relevant follow-up: could you share the specific product type and approximate volumes you are evaluating?
+
+${sign}`,
+
+      productinfo:
+`Dear ${N},
+
+Thank you for your product inquiry${lcLine} via ${srcP}.
+
+Umang Global specialises in encapsulation and particle science for the ${segL} sector. Our relevant product range:
+
+${itemList}
+
+Customisation available: ${P.custom}.
+Release & coating profiles: ${P.profiles}.
+
+Manufacturing credentials:
+  • GMP-certified | ISO 9001:2015 | FSSAI licensed
+  • Capacity: 1,000 tonnes/month
+  • Three dedicated manufacturing entities
+
+Full catalogue: ${catL}
+
+Could you share the specific product type and target application? I will connect you with the appropriate technical team within 24 hours.
+
+${signB}`,
+
+      coa:
+`Dear ${N},
+
+Thank you for your documentation request via ${srcP}.
+
+For our ${segL} product range, the following documentation is available on request:
+  • Certificate of Analysis (COA) — batch-specific or reference standard
+  • Product Specification Sheet (PSS)
+  • Material Safety Data Sheet (MSDS / SDS)
+  • GMP manufacturing certificate
+  • ISO 9001:2015 certificate
+  • FSSAI license copy
+
+Additional documentation (post-NDA):
+  • Stability study data — ICH Q1A accelerated & long-term
+  • Master Manufacturing Formula (CMO clients)
+  • Vendor qualification dossier
+  • Regulatory dossier support
+
+Product catalogue for reference: ${catL}
+
+Could you specify the exact product for which you require the COA? I can arrange a batch-specific document once I have the product code.
+
+${sign}`,
+
+      pricing:
+`Dear ${N},
+
+Thank you for your pricing enquiry via ${srcP}.
+
+To provide an accurate cost estimate for your ${segL} requirement, I need a few details:
+
+  1. Product type and active ingredient (if applicable)
+  2. Encapsulation format (beadlets / film / pellet / MUPS / LFHC / gummy / sachet)
+  3. Specification: target mesh size, fill weight or fill volume
+  4. Release profile required (immediate / enteric / sustained / taste-masked)
+  5. Estimated batch size or monthly volume (units or kg — approximate is fine)
+  6. Packaging format: bulk / bottle / blister / sachet
+
+On receipt of these details, a formal quotation will be shared within 24–48 business hours.
+
+Pricing framework:
+  • Volume-tiered pricing — MOQ-dependent
+  • Export quotes: EXW, FOB Mumbai, CIF (Incoterms 2020)
+  • Standard documentation (COA, spec sheet) included in unit price
+  • Stability studies and regulatory dossiers quoted separately
+
+Our product range for reference: ${catL}
+
+${sign}`,
+
+      shipping:
+`Dear ${N},
+
+Thank you for your shipping and lead time inquiry via ${srcP}.
+
+Standard lead times by order type:
+  • Standard / repeat formulation:       3–4 weeks from confirmed PO
+  • New formulation (client-supplied):   5–6 weeks from formulation sign-off
+  • New formulation (Umang-developed):   8–12 weeks including stability
+  • Specialty formats (beadlets, MUPS):  6–8 weeks (complexity-dependent)
+
+Shipping terms:
+  • Domestic (India): Ex-works, door delivery via 3PL partner
+  • Export: FOB Mumbai, CIF, DAP — as per client preference (Incoterms 2020)
+  • Cold-chain available for temperature-sensitive products
+
+Active export markets: ${MARKETS.join(', ')}
+
+Documentation with every shipment: COA, packing list, commercial invoice, certificate of origin, MSDS. CDSCO / FSSAI documentation included for regulated categories.
+
+Could you share the destination and approximate order volume? I can provide a more precise lead time and freight estimate.
+
+${sign}`,
+
+      moq:
+`Dear ${N},
+
+Thank you for your MOQ inquiry via ${srcP}.
+
+Volume structure for ${segL} products:
+  • Beadlets (standard range):           25 kg per batch
+  • Beadlets (custom formulation):       50 kg per batch minimum
+  • Pharma pellets / MUPS:               50 kg per batch
+  • Liquid-filled capsules:              30,000 units
+  • Gummies / sachets:                   Subject to formulation discussion
+  • HPMC films / Actifilms:             Project-specific
+
+Development & early-stage options:
+  • R&D / pilot batches from 5–10 kg
+  • Scale-up programme with formulation lock before commercial commitment
+  • Volume ramp-up scheduling for repeat programmes
+
+Our facility capacity is 1,000 tonnes per month — we support both development-scale and large commercial volumes without lead time impact.
+
+Could you share your expected monthly volume and product type? This helps us structure the most practical batch framework for your project.
+
+${sign}`,
+
+      sample:
+`Dear ${N},
+
+Thank you for reaching out via ${srcP}.
+
+Umang Global offers complimentary product samples for our standard range — no charge, no obligation.
+
+To dispatch your sample, please share:
+  1. Product type from our ${segL} range (catalogue: ${catL})
+  2. Preferred specification: mesh size, colour, active, release profile
+  3. Delivery address and contact number for courier
+  4. Testing parameters your team will evaluate
+
+Standard sample pack:
+  • 50–200 g of product (beadlet / pellet formats)
+  • Batch-specific Certificate of Analysis (COA)
+  • Product specification sheet
+  • MSDS / SDS
+
+Our technical team is available for a pre-dispatch call to align on test parameters before the sample reaches your lab.
+
+${sign}`,
+
+      trial:
+`Dear ${N},
+
+Thank you for your pilot batch inquiry via ${srcP}.
+
+Our trial batch programme is designed to give you full manufacturing data and scale-up confidence before commercial commitment:
+
+Programme scope:
+  • Batch size: 25–100 kg (format-dependent)
+  • Deliverables: batch manufacturing record, in-process QC data, finished goods COA
+  • Formats: beadlets, MUPS, pharma pellets, LFHC
+
+Process steps:
+  1. Formulation review & feasibility assessment (1–2 working days)
+  2. Pilot batch proposal with costing (3–5 working days)
+  3. Batch execution & QC testing (2–4 weeks)
+  4. Documentation handover & technical debrief call
+
+Scale-up path:
+Pilot batch parameters translate directly to commercial scale. Stability studies can be initiated in parallel to reduce time-to-market.
+
+Catalogue for reference: ${catL}
+
+Could you share the formulation brief or product specification? I will arrange a technical assessment call within 48 hours.
+
+${sign}`,
+
+      regulatory:
+`Dear ${N},
+
+Thank you for your regulatory and compliance inquiry via ${srcP}.
+
+Umang Global's quality credentials:
+  • GMP-certified manufacturing (WHO-GMP equivalent documentation available)
+  • ISO 9001:2015 certified
+  • FSSAI licensed (food-grade and nutraceutical products)
+  • In-house QC laboratory: HPLC, dissolution testing, microbiology, particle sizing
+  • Third-party testing available via NABL-accredited labs
+
+For ${segL} products, we provide:
+  • Full batch documentation (BMR, BPR, finished goods COA)
+  • Stability studies per ICH Q1A / Q1E guidelines
+  • CDSCO Drug Master File support (pharmaceutical actives)
+  • FSSAI compliance documentation for food-supplement formats
+
+For export clients:
+  • WHO-GMP certificate on request
+  • US FDA-ready documentation (eligible products)
+  • EU GMP-equivalent documentation
+  • Country-specific CoO and phytosanitary certificates
+  • Regulatory dossier preparation support
+
+Is there a specific market, certification, or regulatory requirement your team needs to verify? I can connect you with our Regulatory Affairs manager directly.
+
+${sign}`,
+
+      rdcollab:
+`Dear ${N},
+
+Thank you for your R&D collaboration inquiry${lcLine} via ${srcP}.
+
+Umang Global operates a dedicated formulation R&D function with deep expertise in particle engineering and encapsulation technology:
+
+Core capabilities:
+  • Extrusion-spheronisation and fluid-bed coating platforms
+  • Multi-layer encapsulation and co-encapsulation of incompatible actives
+  • Controlled, sustained, pulsatile, and enteric release systems
+  • Liposomal and nano-encapsulation
+  • Colour customisation and taste masking
+
+Customisation parameters: ${P.custom}
+Profiles achievable: ${P.profiles}
+
+Collaboration models:
+  • Fee-for-service formulation development
+  • Joint Development Agreement (JDA) with full IP protection
+  • Technology transfer from client formula to commercial scale
+  • NDA / CDA in place from project initiation
+
+Could you share a brief on the active ingredient, target release profile, and intended market? I will arrange a call with our R&D lead within 48 hours.
+
+${sign}`,
+
+      partnership:
+`Dear ${N},
+
+Thank you for your contract manufacturing partnership inquiry via ${srcP}.
+
+Umang Global operates as a full-service CMO / CDMO for the ${segL} sector — supporting clients from formulation development through commercial-scale production, QC documentation, and global export dispatch.
+
+Manufacturing capabilities:
+${itemList}
+
+Key facts:
+  • Capacity: 1,000 tonnes/month across three dedicated manufacturing entities
+  • Certifications: GMP | ISO 9001:2015 | FSSAI
+  • Active export markets: ${MARKETS.join(', ')}
+
+Partnership models:
+  • Toll manufacturing (client supplies formula and raw materials)
+  • Full-service CMO (we source, develop, manufacture, document)
+  • Private label / white label programmes
+  • Co-development with IP assignment to client
+
+Every partnership includes NDA from Day 1, a dedicated project manager, and full batch record transparency.
+
+Would a 20-minute discovery call work this week? I would like to understand your project pipeline before proposing a structure.
+
+${sign}`,
+
+      export:
+`Dear ${N},
+
+Thank you for your export inquiry via ${srcP}.
+
+Umang Global is an established export-ready manufacturer with active supply programmes across ${MARKETS.join(', ')}.
+
+Export credentials:
+  • GMP-certified (WHO-GMP equivalent documentation available)
+  • ISO 9001:2015 certified
+  • FSSAI licensed
+  • Certificate of Origin — Chamber of Commerce certified
+  • MSDS / SDS for all product categories
+
+Shipping capabilities:
+  • Incoterms: EXW, FOB Mumbai, CIF, DAP, DDP (market-dependent)
+  • Sea and air freight options; cold-chain available
+  • HS code documentation and customs declaration support
+
+${segL} product range for reference: ${catL}
+
+Could you share the destination country and product category? I will confirm applicable certifications and connect you with our export logistics team within 24 hours.
+
+${sign}`
+    };
+    return bodies[lt] || bodies.productinfo;
+  }
+
+  // ── EMAIL 2 ──────────────────────────────────────────────────────
+  if (idx === 1) {
+    const tech = {
+      personalcare: `What sets Umang Global apart in personal care encapsulation:\n\n  • Colour-changing beads — pH, temperature, or shear-responsive; drives genuine on-shelf differentiation\n  • Fragrance beads — controlled burst-release profiles engineered for both rinse-off and leave-on systems\n  • Liposomal encapsulates — significantly superior active delivery and skin absorption vs. free-form actives\n  • Actifilms / HPMC films — clean-label, vegan, film-forming matrix with functional active payload for toothpaste\n  • Dissolving and exfoliating beads — biodegradable, customisable by particle size, colour, and active loading\n\n  All formats fully customisable: ${P.custom}`,
+      nutraceuticals: `What sets Umang Global apart in nutraceutical encapsulation:\n\n  • Multi-active beadlets — incompatible actives separated by precision coating layers within a single capsule\n  • Release engineering: enteric, sustained, time-release, and immediate — all achievable in one formulation\n  • Format flexibility: same active across pellets, LFHCs, gummies, sachets, and hot/cold beverages\n  • Stability advantage: hygroscopic and oxidation-sensitive actives (carotenoids, omega, probiotics) protected by multi-layer coating\n  • FSSAI-compliant formulations; export documentation ready for ${MARKETS.join(', ')}`,
+      pharma: `What sets Umang Global apart in pharmaceutical pellet manufacturing:\n\n  • MUPS technology — dose-flexible, tamper-evident, patient-friendly vs. conventional monolithic tablets\n  • Particle size precision: controlled distribution for predictable dissolution and confirmed bioavailability\n  • Release profiles: immediate, enteric, extended, pulsatile — all achievable on our extrusion-spheronisation platform\n  • Batch-to-batch reproducibility: in-process QC at each stage with full BMR documentation\n  • Scale continuity: lab (1–5 kg) → pilot → commercial (500 kg+) on the same technology platform`,
+      engineering: `What sets Umang Global apart in encapsulation machinery:\n\n  • Equipment designed and validated on the same product lines we use for commercial production\n  • Extruder + spheronizer systems configured specifically for pharma and nutraceutical beadlet manufacturing\n  • GMP-compliant builds delivered with IQ/OQ/PQ documentation support\n  • After-sales package: technical support, spare parts, process optimisation — included\n  • Available in R&D bench, pilot, and commercial scale — consistent architecture across all`
+    };
+    return `Dear ${N},
+
+Following up on my previous message — I wanted to share some specific context relevant to your ${segL} project.
+
+${tech[seg] || tech.nutraceuticals}
+
+At a glance — Umang Global:
+  • GMP-certified | ISO 9001:2015 | FSSAI licensed
+  • Capacity: 1,000 tonnes/month across three specialised manufacturing entities
+  • Export markets: ${MARKETS.join(', ')}
+  • Complimentary samples available for all standard product ranges
+
+Full catalogue: ${catL}
+
+Would a 15-minute technical call this week work for you? I can also arrange a complimentary sample — no paperwork, no commitment required.
+
+${signB}`;
+  }
+
+  // ── EMAIL 3 ──────────────────────────────────────────────────────
+  if (idx === 2) {
+    return `Dear ${N},
+
+I am following up briefly — I want to make sure my earlier emails reached your inbox.
+
+If you have reviewed the information and have any questions — on products, samples, pricing, or documentation — I am available to assist promptly.
+
+If the timing on your ${segL} project has shifted or you are still in the evaluation phase, that is entirely understandable. A short reply would simply help me follow up at a more convenient time.
+
+${signS}`;
+  }
+
+  // ── EMAIL 4 ──────────────────────────────────────────────────────
+  if (idx === 3) {
+    return `Dear ${N},
+
+This will be my final follow-up — I do not want to occupy your inbox unnecessarily.
+
+If your ${segL} manufacturing requirement becomes active at any point, Umang Global remains available as a partner. We work with clients at every stage — early formulation, scale-up, commercial production, private label, and export programmes.
+
+Should your project move forward — now or in the future — please feel free to reach out directly at ${PHONE} or reply to this email.
+
+I wish you and your team the best with the project.
+
+${signS}`;
+  }
+  return '';
+}
+
+// ── BODY STORE — raw plain text indexed by card number ────────────
+const bodyStore = {};
+
+// ── Convert plain text → display HTML (for rendering inside the card) ──
+// Each line → <p>; blank lines → spacer <p>; leading spaces → &nbsp;
+function textToHtml(txt) {
+  return txt
+    .split('\n')
+    .map(line => {
+      const esc = line
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+      const indented = esc
+        .replace(/^ {6}/g, '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+        .replace(/^ {4}/g, '&nbsp;&nbsp;&nbsp;&nbsp;')
+        .replace(/^ {2}/g, '&nbsp;&nbsp;');
+      return `<p style="margin:0;min-height:1.2em;">${indented || '&nbsp;'}</p>`;
+    })
+    .join('');
+}
+
+// ── Convert plain text → Outlook-safe clipboard HTML ──────────────
+// Outlook ignores plain text \n. It reads the text/html clipboard flavour.
+// We wrap every line in <p> with explicit spacing so Outlook preserves it.
+// Blank lines become a zero-height <p> with a non-breaking space so the
+// blank line is preserved rather than collapsed.
+function textToClipboardHtml(txt) {
+  const lines = txt.split('\n').map(line => {
+    const esc = line
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    // Preserve indentation (  • bullet lines start with 2 spaces)
+    const indented = esc
+      .replace(/^ {6}/g, '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+      .replace(/^ {4}/g, '&nbsp;&nbsp;&nbsp;&nbsp;')
+      .replace(/^ {2}/g, '&nbsp;&nbsp;');
+
+    const content = indented || '&nbsp;';
+    // Use margin-bottom:0, margin-top:0 so spacing is purely from blank lines
+    return `<p style="margin:0;padding:0;line-height:1.6;font-family:Calibri,Arial,sans-serif;font-size:11pt;">${content}</p>`;
+  });
+
+  return `<!DOCTYPE html><html><head><meta charset="utf-8"></head><body style="font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#1a1a1a;">${lines.join('')}</body></html>`;
+}
+
+// ── Copy both text/html AND text/plain to clipboard ───────────────
+// Outlook (and Word, Gmail, Apple Mail) reads text/html when available.
+// Notepad and plain text contexts fall back to text/plain.
+// Both flavours are written simultaneously via the ClipboardItem API.
+async function copyText(rawText, btn) {
+  const origHtml = btn.innerHTML;
+
+  const doFeedback = () => {
+    btn.innerHTML = `<svg viewBox="0 0 14 14"><path d="M2 7l4 4 6-6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Copied!`;
+    btn.classList.add('copied');
+    setTimeout(() => { btn.innerHTML = origHtml; btn.classList.remove('copied'); }, 2500);
+  };
+
+  const htmlContent = textToClipboardHtml(rawText);
+
+  // Method 1: ClipboardItem API — writes both text/html + text/plain at once.
+  // This is what makes Outlook receive properly formatted content.
+  if (navigator.clipboard && typeof ClipboardItem !== 'undefined') {
+    try {
+      const item = new ClipboardItem({
+        'text/html':  new Blob([htmlContent], { type: 'text/html' }),
+        'text/plain': new Blob([rawText],     { type: 'text/plain' })
+      });
+      await navigator.clipboard.write([item]);
+      doFeedback();
+      return;
+    } catch (err) {
+      // Fall through to method 2
+    }
+  }
+
+  // Method 2: execCommand fallback — uses a hidden contenteditable div
+  // so the browser copies HTML (not just plain text) to clipboard.
+  try {
+    const div = document.createElement('div');
+    div.contentEditable = 'true';
+    div.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;pointer-events:none;';
+    div.innerHTML = htmlContent;
+    document.body.appendChild(div);
+    const sel = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents(div);
+    sel.removeAllRanges();
+    sel.addRange(range);
+    document.execCommand('copy');
+    sel.removeAllRanges();
+    document.body.removeChild(div);
+    doFeedback();
+  } catch (err) {
+    // Last resort: plain text only
+    try {
+      await navigator.clipboard.writeText(rawText);
+      doFeedback();
+    } catch (e) {
+      alert('Copy failed — please manually select and copy the email text.');
+    }
+  }
+}
+
+// ── GENERATE ──────────────────────────────────────────────────────
+function generate() {
+  let ok = true;
+  ['src','seg','lt'].forEach(k => {
+    if (!ST[k]) {
+      document.getElementById(`req_${k}`).classList.add('show');
+      ok = false;
+    }
+  });
+  if (!ok) {
+    document.querySelector('.left-panel').scrollTo({top:0, behavior:'smooth'});
+    return;
+  }
+
+  const CO   = document.getElementById('compSel').value;
+  const ME   = document.getElementById('repName').value.trim() || '[Your Name]';
+  const N    = document.getElementById('leadName').value.trim() || '[Lead Name]';
+  const lco  = document.getElementById('leadCo').value.trim();
+
+  document.getElementById('emptyState').style.display = 'none';
+  const out = document.getElementById('seqOut');
+  out.className = 'seq-out';
+  setTimeout(() => out.classList.add('visible'), 10);
+
+  const segL = PROD[ST.seg]?.label || ST.seg;
+  document.getElementById('outTitle').innerHTML =
+    `<em>${ltLabel[ST.lt]}</em> — ${segL}`;
+
+  const meta = document.getElementById('outMeta');
+  meta.innerHTML = [
+    CO,
+    (srcPhrase[ST.src] || ST.src).replace('your ',''),
+    ltLabel[ST.lt]
+  ].map(t => `<div class="meta-tag">${t}</div>`).join('');
+
+  const subjectList = subjects(ST.lt, ST.seg);
+  const stack = document.getElementById('emailStack');
+  stack.innerHTML = '';
+
+  const copyIcon = `<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="8" height="8" rx="1"/><path d="M9 4V2.5A.5.5 0 008.5 2h-6a.5.5 0 00-.5.5v6a.5.5 0 00.5.5H4"/></svg>`;
+
+  for (let i = 0; i < 4; i++) {
+    const subj     = subjectList[i];
+    const rawBody  = buildBody(i, ST.lt, ST.seg, ST.src, N, ME, CO, lco);
+    const htmlBody = textToHtml(rawBody);
+
+    // Store raw text for copying
+    bodyStore[i] = rawBody;
+
+    const card = document.createElement('div');
+    card.className = `ecard e${i+1}`;
+    card.id = `ec_${i}`;
+    card.innerHTML = `
+      <div class="ecard-hd" onclick="toggleCard(${i})">
+        <div class="e-num-badge">${i+1}</div>
+        <div class="e-info">
+          <div class="e-label">${cardLabels[i]}</div>
+          <div class="e-timing">${timings[i]}</div>
+        </div>
+        <div class="e-preview">${subj.replace(/</g,'&lt;')}</div>
+        <div class="e-chevron">›</div>
+      </div>
+      <div class="ecard-bd" id="eb_${i}">
+        <div class="ef-lbl">Subject Line</div>
+        <div class="ef-subj" id="es_${i}">${subj.replace(/</g,'&lt;')}</div>
+        <div class="ef-lbl" style="display:flex;align-items:center;justify-content:space-between;">
+          Email Body
+          <button class="copy-btn-inline" id="cbtn_${i}" onclick="copyOne(${i},event)">
+            ${copyIcon} Copy Email
+          </button>
+        </div>
+        <div class="ef-body-wrap">
+          <div class="ef-body" id="ebod_${i}">${htmlBody}</div>
+        </div>
+        <div class="strat">
+          <div class="strat-ico">💡</div>
+          <div>${strategies[i]}</div>
+        </div>
+      </div>`;
+    stack.appendChild(card);
+  }
+
+  toggleCard(0);
+  document.getElementById('seqOut').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function toggleCard(i) {
+  const card = document.getElementById(`ec_${i}`);
+  const bd   = document.getElementById(`eb_${i}`);
+  if (!card) return;
+  card.classList.toggle('is-open');
+  bd.classList.toggle('is-open');
+}
+
+function copyOne(i, e) {
+  e.stopPropagation();
+  const text = bodyStore[i];
+  if (!text) return;
+  const btn = document.getElementById(`cbtn_${i}`);
+  copyText(text, btn);
+}
+
+function copyAll() {
+  let all = '';
+  for (let i = 0; i < 4; i++) {
+    const subj = document.getElementById(`es_${i}`)?.textContent?.trim() || '';
+    const body = (bodyStore[i] || '').trim();
+    all += `${'─'.repeat(68)}\n${cardLabels[i].toUpperCase()} | ${timings[i]}\nSUBJECT: ${subj}\n${'─'.repeat(68)}\n\n${body}\n\n\n`;
+  }
+  const btn = document.querySelector('.copy-all-btn');
+  copyText(all.trim(), btn);
+}
+</script>
+</body>
+</html>
